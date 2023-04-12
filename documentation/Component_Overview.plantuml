@@ -1,0 +1,26 @@
+@startuml Components
+
+
+package "App" as app{
+    [HomeScreen]
+    [TrainingArchiveScreen]
+    [LoginScreen]
+    [TrainingBuilderScreen]
+    [DataModel]
+    [DataController]
+    [DataRepository]
+
+}
+cloud "Firebase" as firebase
+
+DataRepository --> firebase
+DataRepository --> DataModel
+DataController --> DataModel
+HomeScreen --> DataController
+LoginScreen --> DataController
+TrainingBuilderScreen --> DataController
+TrainingArchiveScreen --> DataController
+DataController --> DataRepository
+
+
+@enduml
