@@ -1,4 +1,4 @@
-import 'package:app/Home/navigationBar.dart';
+import 'package:app/Home/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
