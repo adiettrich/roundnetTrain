@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "642510020139",
+    "project_id": "roundnet-trainer-app",
+    "storage_bucket": "roundnet-trainer-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642510020139:android:363c3e449f5b0e4b38d46e",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642510020139-pu5nio0mnjd0oc2e2put7rpvh6psbbfu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEsn3FLT6z_0qTPpR_5Q-5xH0N2Hibmyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642510020139-pu5nio0mnjd0oc2e2put7rpvh6psbbfu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
