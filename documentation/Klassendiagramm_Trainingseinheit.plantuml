@@ -1,0 +1,18 @@
+@startuml Overview
+'Klassenstruktur
+
+abstract class Event 
+abstract class EventUnit
+abstract class PersonOfInterest
+
+class TrainingUnit extends EventUnit
+class TrainingSession extends Event
+class Trainer extends PersonOfInterest
+class Owner extends PersonOfInterest
+
+'Beziehungen
+Event "0..1" o-- "1..*" EventUnit
+TrainingSession "0..1" o-- "1" Trainer
+Event "0..1" o-- "1" Owner
+
+@enduml
