@@ -32,7 +32,7 @@ class ExerciseCard extends StatelessWidget {
                           unselectedColor: const Color.fromARGB(0, 244, 67, 54),
                           padding: pi / 80,
                           width: 50,
-                          height: 50,
+                          height: 40,
                           startingAngle: pi / 2,
                           arcSize: pi,
                           gradientColor: const LinearGradient(
@@ -72,6 +72,7 @@ class ExerciseCard extends StatelessWidget {
   }
 
   List<Widget> buildPlayerCount() {
-    return List.generate(exercise.playerCount, (index) => Icon(Icons.person));
+    return List.generate(
+        exercise.playerCount, (index) => const Icon(Icons.person));
   }
 }
