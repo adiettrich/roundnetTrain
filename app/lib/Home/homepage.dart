@@ -1,4 +1,5 @@
-import 'package:app/Home/navigation_bar.dart';
+import 'package:app/home/homescreen.dart';
+import 'package:app/home/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -8,9 +9,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Roundnet Train")),
-      body: const Center(
-        child: Text("Hallo"),
-      ),
+      body: const MyHomeScreen(),
       backgroundColor: Colors.blueGrey,
       bottomNavigationBar: const MyNavigationBar(),
     );

@@ -1,13 +1,18 @@
+import 'package:app/home/homescreen.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class TrainAppModule extends Module {
   @override
-  List<Bind<Object>> get binds {
-    return [];
+  void binds(Injector i) {
+    //Example
+    //i.add(MyClass.new);
   }
 
   @override
-  List<ModularRoute> get routes {
-    return [];
+  void routes(RouteManager r) {
+    final args = r.args;
+    r.child("/", child: (context) => const MyHomeScreen());
+    //Example
+    //r.module("/name-module", module: MyModule());
   }
 }

@@ -1,0 +1,43 @@
+{
+    "exercises": [
+        {
+            "name": "Übung 1",
+            "description": "Beschreibung der Übung 1",
+            "duration": 5,
+            "tags": [
+                "defense",
+                "fun"
+            ],
+            "skillLevel": 1,
+            "videoUrl": "https://www.youtube.com/watch?v=QH2-TGUlwu4",
+            "playerCount": 3,
+            "longDescription": "Lange Beschreibung der Übung 1"
+        },
+        {
+            "name": "Übung 2",
+            "description": "Beschreibung der Übung 2",
+            "duration": 15,
+            "tags": [
+                "intense",
+                "insane"
+            ],
+            "skillLevel": 2,
+            "videoUrl": "https://www.youtube.com/watch?v=QH2-TGUlwu4",
+            "playerCount": 2,
+            "longDescription": "Lange Beschreibung der Übung 2"
+        },
+        {
+            "name": "Übung 3",
+            "description": "Beschreibung der Übung 3",
+            "duration": 10,
+            "tags": [
+                "blah",
+                "foo"
+            ],
+            "skillLevel": 4,
+            "videoUrl": "https://www.youtube.com/watch?v=QH2-TGUlwu4",
+            "playerCount": 3,
+            "longDescription": "Lange Beschreibung der Übung 3"
+        }
+    ]
+}
