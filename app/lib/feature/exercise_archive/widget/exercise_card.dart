@@ -42,9 +42,9 @@ class ExerciseCard extends StatelessWidget {
                       ],
                     ),
                     title: Text(exercise.name,
-                        style: Theme.of(context).textTheme.headline5),
+                        style: Theme.of(context).textTheme.headlineSmall),
                     subtitle: Text(exercise.description,
-                        style: Theme.of(context).textTheme.bodyText1),
+                        style: Theme.of(context).textTheme.bodyMedium),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

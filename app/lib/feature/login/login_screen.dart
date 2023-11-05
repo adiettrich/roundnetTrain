@@ -19,11 +19,13 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.white,
         body: Column(
           children: [
-            SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height / 3,
-              child: Image.asset('lib/resources/images/TucanBall.jpg'),
-            ),
+            Container(
+                margin: const EdgeInsets.only(top: 30, bottom: 30),
+                height: 200,
+                width: 200,
+                child: ClipOval(
+                  child: Image.asset('lib/resources/images/TucanBall.jpg'),
+                )),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -41,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Email',
+                          'Benutzername',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -59,10 +61,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               prefixIcon: Icon(
-                                Icons.email,
+                                Icons.account_circle,
                                 color: Colors.white,
                               ),
-                              hintText: 'Email',
+                              hintText: 'Benutzername',
                               hintStyle: TextStyle(color: Colors.white),
                             ),
                           ),
