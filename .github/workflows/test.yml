@@ -42,4 +42,4 @@ jobs:
         run: dart analyze
 
       - name: Run tests
-        run: flutter test
+        run: cd app && flutter test
