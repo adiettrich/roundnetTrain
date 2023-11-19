@@ -1,4 +1,5 @@
 import 'package:app/feature/exercise_archive/view/exercise_archive_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../exercise_archive/model/exercise.dart';
 import '../exercise_archive/model/skill_level.dart';
@@ -12,6 +13,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final emailTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailTextController.dispose();
+    passwordTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Benutzername',
+                          'Email',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -56,15 +67,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(12),
                             color: Colors.black,
                           ),
-                          child: const TextField(
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
+                          child: TextField(
+                            controller: emailTextController,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               prefixIcon: Icon(
-                                Icons.account_circle,
+                                Icons.email,
                                 color: Colors.white,
                               ),
-                              hintText: 'Benutzername',
+                              hintText: 'Email',
                               hintStyle: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -84,9 +96,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(12),
                             color: Colors.black,
                           ),
-                          child: const TextField(
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
+                          child: TextField(
+                            controller: passwordTextController,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               prefixIcon: Icon(
                                 Icons.lock,
@@ -100,34 +113,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: 35),
                         GestureDetector(
                           onTap: () {
+                            print(emailTextController.text);
+                            print(passwordTextController.text);
+                            try {
+                              FirebaseAuth.instance.signInWithEmailAndPassword(
+                                  email: emailTextController.text,
+                                  password: passwordTextController.text);
+                            } on FirebaseAuthException catch (e) {
+                              print(e);
+                              _showMyDialog(context);
+                            }
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ExerciseView(
-                                          exercises: [
-                                            Exercise(
-                                                longDescription:
-                                                    "Dies ist die lange Beschreibung",
-                                                name: "Übung 1",
-                                                duration: 10,
-                                                description: "Kurzbeschreibung",
-                                                skillLevel: SkillLevel.beginner,
-                                                tags: ["defense", "block"],
-                                                videoUrl: "https://dawdwad.com",
-                                                playerCount: 2),
-                                            Exercise(
-                                                longDescription:
-                                                    "Dies ist die lange Beschreibung 2",
-                                                name: "Übung 2",
-                                                duration: 15,
-                                                description:
-                                                    "Kurzbeschreibung 2",
-                                                skillLevel: SkillLevel.advanced,
-                                                tags: ["hitting"],
-                                                videoUrl: "https://dawdwad.com",
-                                                playerCount: 2)
-                                          ],
-                                        )));
+                                    builder: (context) => ExerciseView()));
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -169,7 +168,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SecondScreen()));
+                                        builder: (context) =>
+                                            const SecondScreen()));
                               },
                               child: Container(
                                 width: 60,
@@ -188,7 +188,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SecondScreen()));
+                                        builder: (context) =>
+                                            const SecondScreen()));
                               },
                               child: Container(
                                 width: 60,
@@ -212,6 +213,34 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> _showMyDialog(context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Login Error'),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Login fehlgeschlagen'),
+                Text('Bitte erneut versuchen.'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Approve'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

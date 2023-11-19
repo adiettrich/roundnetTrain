@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class MyNavigationBar extends StatelessWidget {
   const MyNavigationBar({Key? key}) : super(key: key);
@@ -9,15 +10,22 @@ class MyNavigationBar extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
         BottomNavigationBarItem(
-            label: "First Item", icon: Icon(Icons.abc_sharp)),
-        BottomNavigationBarItem(
-            label: "Second Item", icon: Icon(Icons.abc_sharp))
+            label: "Train", icon: Icon(Icons.calendar_month_rounded)),
+        BottomNavigationBarItem(label: "Übungen", icon: Icon(Icons.list))
       ],
-      onTap: (value) => onClick(value),
+      onTap: (value) {
+        switch (value) {
+          case 0:
+            Modular.to.navigate("/");
+            break;
+          case 1:
+            Modular.to.navigate('/training_builder');
+            break;
+          case 2:
+            Modular.to.navigate('/exercise_view');
+            break;
+        }
+      },
     );
-  }
-
-  void onClick(var value) {
-    //TODO
   }
 }
